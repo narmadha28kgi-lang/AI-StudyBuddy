@@ -220,6 +220,6 @@ def init_db():
                  (id INTEGER PRIMARY KEY, user_id INTEGER, content TEXT)''')
     conn.commit()
     conn.close()
- init_db()
+init_db()
 if __name__ == "__main__":
     app.run(debug=True)
