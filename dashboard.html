@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | AI StudyBuddy{% endblock %}
+{% block content %}
+<div class="hero">
+  <div><span class="eyebrow">YOUR PERSONAL LEARNING SPACE</span><h1>Hello, {{ session.get('name', 'Learner') }}! 👋</h1>
+  <p>Learn smarter, revise faster, and keep your study materials in one place.</p></div>
+</div>
+<div class="cards">
+  <a class="feature" href="{{ url_for('notes') }}"><span>📝</span><h2>Study Notes</h2><p>Save and organize your lesson content.</p></a>
+  <a class="feature" href="{{ url_for('summary') }}"><span>✨</span><h2>AI Summarizer</h2><p>Turn long text into quick revision notes.</p></a>
+  <a class="feature" href="{{ url_for('quiz') }}"><span>❓</span><h2>Quiz Generator</h2><p>Create fill-in-the-blank practice questions.</p></a>
+  <a class="feature" href="{{ url_for('chat') }}"><span>🤖</span><h2>Study Assistant</h2><p>Get study guidance and revision tips.</p></a>
+</div>
+<section class="panel">
+  <div class="panel-head"><h2>Your saved notes</h2><a class="small-btn" href="{{ url_for('notes') }}">+ Add notes</a></div>
+  {% if notes %}
+    {% for note in notes %}
+      <article class="note-row"><div><h3>{{ note.title }}</h3><p>{{ note.content[:180] }}{% if note.content|length > 180 %}…{% endif %}</p><small>{{ note.created_at }}</small></div>
+      <form method="post" action="{{ url_for('delete_note', note_id=note.id) }}" onsubmit="return confirm('Delete this note?')"><button class="danger" type="submit">Delete</button></form></article>
+    {% endfor %}
+  {% else %}<p class="muted">No notes yet. Click “Add notes” to save your first study material.</p>{% endif %}
+</section>
+{% endblock %}

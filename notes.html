@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Study Notes | AI StudyBuddy{% endblock %}
+{% block content %}
+<section class="panel narrow"><h1>Save Study Notes</h1><p class="muted">Add your subject name and lesson content.</p>
+<form method="post">
+  <label>Note title / Subject</label><input name="title" placeholder="e.g. Operating Systems - Unit 1" required>
+  <label>Study content</label><textarea name="content" rows="10" placeholder="Paste or type your notes here..." required></textarea>
+  <button type="submit">Save Notes</button>
+</form></section>
+{% endblock %}

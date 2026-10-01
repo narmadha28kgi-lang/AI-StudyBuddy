@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Quiz | AI StudyBuddy{% endblock %}
+{% block content %}
+<section class="panel narrow"><h1>❓ Quiz Generator</h1><p class="muted">Paste your study material to create quick fill-in-the-blank questions.</p>
+<form method="post"><label>Study material</label><textarea name="content" rows="9" placeholder="Paste several sentences..." required></textarea><button type="submit">Generate Quiz</button></form>
+{% if questions %}<div class="result"><h2>Practice Questions</h2>
+  {% for item in questions %}<div class="question"><p><b>{{ loop.index }}.</b> {{ item.question }}</p><details><summary>Show answer</summary><p>{{ item.answer }}</p></details></div>{% endfor %}
+</div>{% endif %}
+<p class="hint">Prototype note: questions are generated using simple text processing and are intended for revision practice.</p>
+</section>
+{% endblock %}

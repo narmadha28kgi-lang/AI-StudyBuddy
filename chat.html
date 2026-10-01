@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Study Assistant | AI StudyBuddy{% endblock %}
+{% block content %}
+<section class="panel narrow"><h1>🤖 Study Assistant</h1><p class="muted">Ask for study strategies, revision tips, or help planning a topic.</p>
+<form method="post"><label>Your question</label><textarea name="question" rows="4" placeholder="How can I revise a difficult chapter?" required>{{ question }}</textarea><button type="submit">Ask StudyBuddy</button></form>
+{% if answer %}<div class="result"><h2>StudyBuddy</h2><p>{{ answer }}</p></div>{% endif %}
+<p class="hint">This starter version uses an offline guidance response. A real AI model/API can be connected in the next development step.</p>
+</section>
+{% endblock %}

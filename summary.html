@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Summarizer | AI StudyBuddy{% endblock %}
+{% block content %}
+<section class="panel narrow"><h1>✨ Study Text Summarizer</h1><p class="muted">Paste your lesson text to create a short revision summary.</p>
+<form method="post"><label>Study material</label><textarea name="content" rows="10" placeholder="Paste your lesson here..." required></textarea><button type="submit">Generate Summary</button></form>
+{% if result %}<div class="result"><h2>Summary</h2><p>{{ result }}</p></div>{% endif %}
+<p class="hint">Prototype note: this version uses extractive text processing offline. Connect an approved AI API to enable advanced generative summaries.</p>
+</section>
+{% endblock %}
