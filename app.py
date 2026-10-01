@@ -201,7 +201,25 @@ def delete_note(note_id):
                    (note_id, session["user_id"]))
     flash("Note deleted.")
     return redirect(url_for("dashboard"))
+def init_db():
+    conn = sqlite3.connect('studybuddy.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS users
+                 (id INTEGER PRIMARY KEY, username TEXT, password TEXT)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS notes
+                 (id INTEGER PRIMARY KEY, user_id INTEGER, content TEXT)''')
+    conn.commit()
+    conn.close()
 
+def init_db():
+    conn = sqlite3.connect('studybuddy.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS users
+                 (id INTEGER PRIMARY KEY, username TEXT, password TEXT)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS notes
+                 (id INTEGER PRIMARY KEY, user_id INTEGER, content TEXT)''')
+    conn.commit()
+    conn.close()
  init_db()
 if __name__ == "__main__":
     app.run(debug=True)
